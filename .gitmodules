@@ -1,0 +1,3 @@
+[submodule "extern/ScopeCanvas"]
+	path = extern/ScopeCanvas
+	url = https://github.com/Iso83/ScopeCanvas.git
