@@ -2,7 +2,7 @@
 
 #include <ScopeCanvas/editor/text/render/window/Frame.h>
 #include <ScopeCanvas/editor/text/render/window/Settings.h>
-#include <ScopeCanvas/engine/render/Text/Renderer.h>
+#include <ScopeCanvas/engine/render/text/Renderer.h>
 #include <ScopeCanvas/engine/render/window/DrawContext.h>
 #include <ScopeCanvas/engine/render/window/Viewport.h>
 #include <memory>
