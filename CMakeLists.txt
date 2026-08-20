@@ -37,11 +37,22 @@ cppcmake_test_setup()
 # Dependencies
 # =========================================================
 
-dependencies_setup()
+cppcmake_dependency_try_local_packages()
 
-if(NOT TARGET ScopeCanvas_engine_core)
-    cppcmake_dependency_add_subdirectory("extern/ScopeCanvas")
-endif()
+cppcmake_gitsubmodule_init_missing_targets(
+    WORKING_DIRECTORY
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+
+    PATH
+        "extern/ScopeCanvas"
+    TARGET
+        "ScopeCanvas_engine_core"
+)
+
+cppcmake_dependency_add_subdirectory_unless_target(
+    "ScopeCanvas_engine_core"
+    "extern/ScopeCanvas"
+)
 
 # =========================================================
 # Modules
