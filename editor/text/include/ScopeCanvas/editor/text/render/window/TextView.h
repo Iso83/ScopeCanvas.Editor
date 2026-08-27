@@ -12,6 +12,7 @@ class TextView {
 private:
     Session::EditorSession* m_session{};
     Annotation::Model m_annotations;
+    Projection::Projected m_unfoldedProjection;
     Projection::Projected m_projection;
     Settings m_settings;
     Scroll m_scroll;
@@ -32,6 +33,10 @@ public:
     [[nodiscard]] const Projection::Projected& projection() const noexcept {
         return m_projection;
     }
+    void setProjection(Projection::Projected projection) {
+        m_unfoldedProjection = std::move(projection);
+        synchronizeFoldProjection();
+    }
     [[nodiscard]] Settings& settings() noexcept {
         return m_settings;
     }
@@ -51,9 +56,10 @@ public:
         return m_input;
     }
 
-    void setProjection(Projection::Projected projection) {
-        m_projection = std::move(projection);
-    }
+    void synchronizeFoldProjection();
+    bool setFoldCollapsed(std::string_view id, bool collapsed);
+    bool toggleFold(std::string_view id);
+    bool toggleFoldAt(float x, float y);
     const Frame& buildFrame(float viewportHeight, bool active = false, bool showCaret = true);
 };
 

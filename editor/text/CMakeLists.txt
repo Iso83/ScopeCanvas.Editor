@@ -159,6 +159,19 @@ cppcmake_test_add(
 
 cppcmake_test_add(
     NAME
+        Test_${MODULE_TARGET}_TextView
+    TARGET
+        ${MODULE_TARGET}
+    MODULE
+        "editor/text/render/window"
+    SOURCES
+        tests/render/window/TextView.cpp
+    INCLUDE_DIRECTORIES
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+cppcmake_test_add(
+    NAME
         Test_${MODULE_TARGET}_Vertical
     TARGET
         ${MODULE_TARGET}
